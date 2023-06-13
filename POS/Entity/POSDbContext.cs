@@ -10,9 +10,10 @@ namespace POS.Entity
         public POSDbContext(DbContextOptions<POSDbContext> option):base(option){
         }
         public DbSet<User> Users {get;set;}
+        public DbSet<SalesM> Sales {get;set;}
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseNpgsql("host=localhost ;port=5432; Database=Employee Manager; username=postgres; password=MUNIA&12 ;IncludeErrorDetail=true;");
+            builder.UseNpgsql("host=localhost ;port=5432; Database=POS System; username=postgres; password=MUNIA&12 ;IncludeErrorDetail=true;");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

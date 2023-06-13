@@ -23,6 +23,7 @@ namespace POS.Controllers
             {
                 userVMs.Add(new UserVM
                 {
+                    
                     Email = item.Email,
                     Id = item.Id,
                     Pssword = item.Pssword,
