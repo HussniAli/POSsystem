@@ -5,7 +5,7 @@ using POS.Models;
 
 namespace POS.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
     public class ItemController : Controller
     {
         private readonly POSDbContext _posDbContext;
