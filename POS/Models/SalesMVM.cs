@@ -2,9 +2,13 @@ namespace POS.Models
 {
     public class SalesMVM
     {
-        public string OrderType {get;set;}
-        public int OrderNumber {get;set;}
-         public double SubTotal {get;set;}
-         public double Total {get;set;}
+        public int Id { get; set; }
+        public DateOnly SalesDate {get;set;}
+        public int SalesNumber {get;set;}
+        public double SubTotal {get;set;}
+        public double Total {get;set;}
+        public string CustomerName {get;set;}
+        public double Tax {get;set;}
+        public bool Status {get;set;}
     }
 }

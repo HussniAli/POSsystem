@@ -9,15 +9,15 @@ namespace POS.Controllers
     public class UserController : Controller
     {
 
-        private readonly POSDbContext _POSDbContext;
+        private readonly POSDbContext _posDbContext;
         public UserController(POSDbContext pOSDbContext) { 
-            _POSDbContext= pOSDbContext;    
+            _posDbContext= pOSDbContext;    
         }
         [HttpGet]
         [Route("GetUsers")]
         public async Task<List<UserVM>> GetUsers()
         {
-            var users = await _POSDbContext.Users.ToListAsync();
+            var users = await _posDbContext.Users.ToListAsync();
             List<UserVM> userVMs = new List<UserVM>();
             foreach (var item in users)
             {
@@ -41,22 +41,22 @@ namespace POS.Controllers
             user.Id = model.Id;
             user.Pssword = model.Pssword;
             user.UserName = model.UserName;
-            _POSDbContext.Add(user);
-            await _POSDbContext.SaveChangesAsync();
+            _posDbContext.Add(user);
+            await _posDbContext.SaveChangesAsync();
             return true;
         }
         [HttpPost]
         [Route("EditUser")]
         public async Task<bool> EditUser(UserVM model)
         {
-            var user = await _POSDbContext.Users.FindAsync(model.Id);
+            var user = await _posDbContext.Users.FindAsync(model.Id);
             if (user != null)
             {
                 user.Email = model.Email;
                 user.Id = model.Id;
                 user.Pssword = model.Pssword;
                 user.UserName = model.UserName;
-                await _POSDbContext.SaveChangesAsync();
+                await _posDbContext.SaveChangesAsync();
                 return true;
             }
             else
@@ -69,8 +69,8 @@ namespace POS.Controllers
         [Route("DeleteUser")]
         public async Task<bool> DeleteUser(int Id)
         {
-            var user = await _POSDbContext.Users.FindAsync(Id);
-            _POSDbContext.Users.Remove(user);
+            var user = await _posDbContext.Users.FindAsync(Id);
+            _posDbContext.Users.Remove(user);
             return true;    
         }
     }

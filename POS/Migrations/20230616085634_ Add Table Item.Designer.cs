@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using POS.Entity;
@@ -11,9 +12,11 @@ using POS.Entity;
 namespace POS.Migrations
 {
     [DbContext(typeof(POSDbContext))]
-    partial class POSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230616085634_ Add Table Item")]
+    partial class AddTableItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,12 +37,7 @@ namespace POS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("SubCatagoryId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SubCatagoryId");
 
                     b.ToTable("Catagory");
                 });
@@ -87,21 +85,11 @@ namespace POS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CatagoryId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ItemId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CatagoryId");
-
-                    b.HasIndex("ItemId");
 
                     b.ToTable("SubCatagory");
                 });
@@ -143,57 +131,9 @@ namespace POS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("SubCatagoryId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("SubCatagoryId");
-
                     b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("POS.Entity.Catagory", b =>
-                {
-                    b.HasOne("POS.Entity.SubCatagory", "subcatagory")
-                        .WithMany()
-                        .HasForeignKey("SubCatagoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("subcatagory");
-                });
-
-            modelBuilder.Entity("POS.Entity.SubCatagory", b =>
-                {
-                    b.HasOne("POS.Entity.Catagory", null)
-                        .WithMany("subCatagories")
-                        .HasForeignKey("CatagoryId");
-
-                    b.HasOne("POS.Models.Item", "item")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("item");
-                });
-
-            modelBuilder.Entity("POS.Models.Item", b =>
-                {
-                    b.HasOne("POS.Entity.SubCatagory", null)
-                        .WithMany("items")
-                        .HasForeignKey("SubCatagoryId");
-                });
-
-            modelBuilder.Entity("POS.Entity.Catagory", b =>
-                {
-                    b.Navigation("subCatagories");
-                });
-
-            modelBuilder.Entity("POS.Entity.SubCatagory", b =>
-                {
-                    b.Navigation("items");
                 });
 #pragma warning restore 612, 618
         }

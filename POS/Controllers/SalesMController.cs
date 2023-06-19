@@ -8,26 +8,29 @@ namespace POS.Controllers
     [Route("api/[controller]")]
     public class SalesMController : Controller
     {
-        private readonly POSDbContext _POSDbContext;
+        private readonly POSDbContext _posDbContext;
         public SalesMController(POSDbContext pOSDbContext)
         {
-            _POSDbContext = pOSDbContext;
+            _posDbContext = pOSDbContext;
         }
         [HttpGet]
         [Route("GetSales")]
         public async Task<List<SalesMVM>> GetSales()
         {
-            var sales = await _POSDbContext.Sales.ToListAsync();
+            var sales = await _posDbContext.Sales.ToListAsync();
             List<SalesMVM> salesMVMs = new List<SalesMVM>();
             foreach (var i in sales)
             {
                 salesMVMs.Add(new SalesMVM
                 {
 
-                    OrderType = i.OrderType,
-                    OrderNumber = i.OrderNumber,
+                    SalesNumber = i.SalesNumber,
+                    SalesDate = i.SalesDate,
                     SubTotal = i.SubTotal,
                     Total = i.Total,
+                    CustomerName = i.CustomerName,
+                    Tax = i.Tax,
+                    Status = i.Status
                 });
             }
             return salesMVMs;
@@ -37,26 +40,32 @@ namespace POS.Controllers
         public async Task<bool> AddSales(SalesMVM model)
         {
             var sales = new SalesM();
-            sales.OrderType = model.OrderType;
-            sales.OrderNumber = model.OrderNumber;
+            sales.SalesNumber = model.SalesNumber;
+            sales.SalesDate = model.SalesDate;
             sales.SubTotal = model.SubTotal;
             sales.Total = model.Total;
-            _POSDbContext.Add(sales);
-            await _POSDbContext.SaveChangesAsync();
+            sales.CustomerName = model.CustomerName;
+            sales.Tax = model.Tax;
+            sales.Status = model.Status;
+            _posDbContext.Add(sales);
+            await _posDbContext.SaveChangesAsync();
             return true;
         }
         [HttpPost]
         [Route("EditSales")]
         public async Task<bool> EditSales(SalesMVM model)
         {
-            var sales = await _POSDbContext.Sales.FindAsync(model.OrderNumber);
+            var sales = await _posDbContext.Sales.FindAsync(model.SalesNumber);
             if (sales != null)
             {
-                sales.OrderType = model.OrderType;
-                sales.OrderNumber = model.OrderNumber;
-                sales.SubTotal = model.SubTotal;
-                sales.Total = model.Total;
-                await _POSDbContext.SaveChangesAsync();
+            sales.SalesNumber = model.SalesNumber;
+            sales.SalesDate = model.SalesDate;
+            sales.SubTotal = model.SubTotal;
+            sales.Total = model.Total;
+            sales.CustomerName = model.CustomerName;
+            sales.Tax = model.Tax;
+            sales.Status = model.Status;
+                await _posDbContext.SaveChangesAsync();
                 return true;
             }
             else
@@ -67,10 +76,10 @@ namespace POS.Controllers
         }
         [HttpDelete]
         [Route("DeleteSales")]
-        public async Task<bool> DeleteSales(int OrderNumber)
+        public async Task<bool> DeleteSales(int SalesNumber)
         {
-            var sales = await _POSDbContext.Users.FindAsync(OrderNumber);
-            _POSDbContext.Users.Remove(sales);
+            var sales = await _posDbContext.Sales.FindAsync(SalesNumber);
+            _posDbContext.Sales.Remove(sales);
             return true;
         }
     }
