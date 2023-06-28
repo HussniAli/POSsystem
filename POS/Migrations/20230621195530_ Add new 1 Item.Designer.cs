@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using POS.Entity;
@@ -11,9 +12,11 @@ using POS.Entity;
 namespace POS.Migrations
 {
     [DbContext(typeof(POSDbContext))]
-    partial class POSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230621195530_ Add new 1 Item")]
+    partial class Addnew1Item
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,6 +91,9 @@ namespace POS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CatagorycatId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("ItemId")
                         .HasColumnType("integer");
 
@@ -96,6 +102,8 @@ namespace POS.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CatagorycatId");
 
                     b.HasIndex("ItemId");
 
@@ -139,7 +147,12 @@ namespace POS.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int?>("SubCatagoryId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SubCatagoryId");
 
                     b.ToTable("Items");
                 });
@@ -157,6 +170,10 @@ namespace POS.Migrations
 
             modelBuilder.Entity("POS.Entity.SubCatagory", b =>
                 {
+                    b.HasOne("POS.Entity.Catagory", null)
+                        .WithMany("subCatagories")
+                        .HasForeignKey("CatagorycatId");
+
                     b.HasOne("POS.Models.Item", "item")
                         .WithMany()
                         .HasForeignKey("ItemId")
@@ -164,6 +181,23 @@ namespace POS.Migrations
                         .IsRequired();
 
                     b.Navigation("item");
+                });
+
+            modelBuilder.Entity("POS.Models.Item", b =>
+                {
+                    b.HasOne("POS.Entity.SubCatagory", null)
+                        .WithMany("items")
+                        .HasForeignKey("SubCatagoryId");
+                });
+
+            modelBuilder.Entity("POS.Entity.Catagory", b =>
+                {
+                    b.Navigation("subCatagories");
+                });
+
+            modelBuilder.Entity("POS.Entity.SubCatagory", b =>
+                {
+                    b.Navigation("items");
                 });
 #pragma warning restore 612, 618
         }

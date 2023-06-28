@@ -7,5 +7,7 @@ namespace POS.Models
         public int Id {get;set;}
         public string Name {get;set;}
         public int SubCatagoryId {get;set;}
+        public SubCatagory SubCatagory {get;set;}
+        
     }
 }

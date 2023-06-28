@@ -1,18 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove=".vs\**" />
     <Content Remove=".vs\**" />
     <EmbeddedResource Remove=".vs\**" />
     <None Remove=".vs\**" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
@@ -22,6 +20,22 @@
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <Content Include="Controllers\ItemController.cs" />
+    <Content Include="Controllers\UserController.cs" />
+    <Content Include="Controllers\SubCatagory.cs" />
+    <Content Include="Program.cs" />
+    <Content Include="Models\SubCatagoryVM.cs" />
+    <Content Include="Entity\Catagory.cs" />
+    <Content Include="Controllers\WeatherForecastController.cs" />
+    <Content Include="Models\Item.cs" />
+    <Content Include="Controllers\CatagoryController.cs" />
+    <Content Include="Controllers\SalesMController.cs" />
+    <Content Include="Entity\SubCatagory.cs" />
+    <Content Include="Entity\POSDbContext.cs" />
+    <Content Include="Entity\SalesM.cs" />
+    <Content Include="Entity\ItemVm.cs" />
+    <Content Include="Models\UserVM.cs" />
+    <Content Include="Models\SalesMVM.cs" />
+    <Content Include="Models\CatagoryVM.cs" />
   </ItemGroup>
-
 </Project>
