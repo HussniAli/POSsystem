@@ -127,3 +127,9 @@ D:\work\POS\POSsystem\POS\obj\Debug\net7.0\refint\POS.dll
 D:\work\POS\POSsystem\POS\obj\Debug\net7.0\POS.pdb
 D:\work\POS\POSsystem\POS\obj\Debug\net7.0\POS.genruntimeconfig.cache
 D:\work\POS\POSsystem\POS\obj\Debug\net7.0\ref\POS.dll
+D:\work\POS\POSsystem\POS\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\work\POS\POSsystem\POS\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\work\POS\POSsystem\POS\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\work\POS\POSsystem\POS\bin\Debug\net7.0\Microsoft.Extensions.Identity.Core.dll
+D:\work\POS\POSsystem\POS\bin\Debug\net7.0\Microsoft.Extensions.Identity.Stores.dll
+D:\work\POS\POSsystem\POS\bin\Debug\net7.0\Microsoft.Extensions.Options.dll

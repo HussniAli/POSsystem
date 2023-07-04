@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\work\\POS\\POSsystem\\POS\\POS.csproj": {}
+    "D:\\work\\POS\\POSsystem\\pos\\POS.csproj": {}
   },
   "projects": {
-    "D:\\work\\POS\\POSsystem\\POS\\POS.csproj": {
+    "D:\\work\\POS\\POSsystem\\pos\\POS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\work\\POS\\POSsystem\\POS\\POS.csproj",
+        "projectUniqueName": "D:\\work\\POS\\POSsystem\\pos\\POS.csproj",
         "projectName": "POS",
-        "projectPath": "D:\\work\\POS\\POSsystem\\POS\\POS.csproj",
+        "projectPath": "D:\\work\\POS\\POSsystem\\pos\\POS.csproj",
         "packagesPath": "C:\\Users\\Work\\.nuget\\packages\\",
-        "outputPath": "D:\\work\\POS\\POSsystem\\POS\\obj\\",
+        "outputPath": "D:\\work\\POS\\POSsystem\\pos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Work\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.2, )"

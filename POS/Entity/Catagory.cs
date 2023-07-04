@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 namespace POS.Entity
 {
-    [Table("SalesMaster")]
+    [Table("catagory")]
     public class Catagory
     {
         [KeyAttribute]

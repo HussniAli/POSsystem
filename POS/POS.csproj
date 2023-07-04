@@ -12,6 +12,7 @@
     <None Remove=".vs\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
@@ -37,5 +38,12 @@
     <Content Include="Models\UserVM.cs" />
     <Content Include="Models\SalesMVM.cs" />
     <Content Include="Models\CatagoryVM.cs" />
+    <Content Include="Migrations\20230701165040_Add Identity.cs" />
+    <Content Include="Migrations\POSDbContextModelSnapshot.cs" />
+    <Content Include="Migrations\20230701174247_ Add new.cs" />
+    <Content Include="Models\RegisterViewModel.cs" />
+    <Content Include="Controllers\UserOneController.cs" />
+    <Content Include="Entity\LoginViewModel.cs" />
+    <Content Include="Entity\RegisterViewModel.cs" />
   </ItemGroup>
 </Project>
